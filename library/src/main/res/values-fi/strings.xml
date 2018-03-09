@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mi_content_description_skip">Ohita</string>
+    <string name="mi_content_description_back">Takaisin</string>
+    <string name="mi_content_description_next">Seuraava</string>
+    <string name="mi_content_description_next_finish">Seuraava/Lopeta</string>
+    <plurals name="mi_label_grant_permission">
+        <item quantity="one">Myönnä käyttöoikeus</item>
+        <item quantity="other">Myönnä käyttöoikeudet</item>
+    </plurals>
+    <string name="mi_label_button_cta">Aloita</string>
+</resources>
