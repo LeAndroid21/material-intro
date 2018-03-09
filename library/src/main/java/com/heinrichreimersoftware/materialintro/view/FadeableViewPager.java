@@ -133,59 +133,62 @@ public class FadeableViewPager extends SwipeBlockableViewPager {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return object != null && adapter.isViewFromObject(view, object);
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return adapter.isViewFromObject(view, object);
         }
 
         @Override
-        public void startUpdate(ViewGroup container) {
+        public void startUpdate(@NonNull ViewGroup container) {
             adapter.startUpdate(container);
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            if (position < adapter.getCount())
-                return adapter.instantiateItem(container, position);
-            return null;
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            //if (position < adapter.getCount())
+            return adapter.instantiateItem(container, position);
+            //return null;
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             if (position < adapter.getCount())
                 adapter.destroyItem(container, position, object);
         }
 
         @Override
-        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             if (position < adapter.getCount())
                 adapter.setPrimaryItem(container, position, object);
         }
 
         @Override
-        public void finishUpdate(ViewGroup container) {
+        public void finishUpdate(@NonNull ViewGroup container) {
             adapter.finishUpdate(container);
         }
 
         @SuppressWarnings("deprecation")
         @Deprecated
         @Override
-        public void startUpdate(View container) {
+        public void startUpdate(@NonNull View container) {
             adapter.startUpdate(container);
         }
 
+        @NonNull
         @SuppressWarnings("deprecation")
         @Deprecated
         @Override
-        public Object instantiateItem(View container, int position) {
-            if (position < adapter.getCount())
+        public Object instantiateItem(@NonNull View container, int position) {
+            // TODO: Experimental, but this should never be null?
+            //if (position < adapter.getCount())
                 return adapter.instantiateItem(container, position);
-            return null;
+            //return null;
         }
 
         @SuppressWarnings("deprecation")
         @Deprecated
         @Override
-        public void destroyItem(View container, int position, Object object) {
+        public void destroyItem(@NonNull View container, int position, @NonNull Object object) {
             if (position < adapter.getCount())
                 adapter.destroyItem(container, position, object);
         }
@@ -193,7 +196,7 @@ public class FadeableViewPager extends SwipeBlockableViewPager {
         @SuppressWarnings("deprecation")
         @Deprecated
         @Override
-        public void setPrimaryItem(View container, int position, Object object) {
+        public void setPrimaryItem(@NonNull View container, int position, @NonNull Object object) {
             if (position < adapter.getCount())
                 adapter.setPrimaryItem(container, position, object);
         }
@@ -201,7 +204,7 @@ public class FadeableViewPager extends SwipeBlockableViewPager {
         @SuppressWarnings("deprecation")
         @Deprecated
         @Override
-        public void finishUpdate(View container) {
+        public void finishUpdate(@NonNull View container) {
             adapter.finishUpdate(container);
         }
 
@@ -216,19 +219,19 @@ public class FadeableViewPager extends SwipeBlockableViewPager {
         }
 
         @Override
-        public int getItemPosition(Object object) {
+        public int getItemPosition(@NonNull Object object) {
             int position = adapter.getItemPosition(object);
             if (position < adapter.getCount()) return position;
             return POSITION_NONE;
         }
 
         @Override
-        public void registerDataSetObserver(DataSetObserver observer) {
+        public void registerDataSetObserver(@NonNull DataSetObserver observer) {
             adapter.registerDataSetObserver(observer);
         }
 
         @Override
-        public void unregisterDataSetObserver(DataSetObserver observer) {
+        public void unregisterDataSetObserver(@NonNull DataSetObserver observer) {
             adapter.unregisterDataSetObserver(observer);
         }
 
@@ -257,7 +260,7 @@ public class FadeableViewPager extends SwipeBlockableViewPager {
         }
 
         @Override
-        public void transformPage(View page, float position) {
+        public void transformPage(@NonNull View page, float position) {
             pageTransformer.transformPage(page, Math.min(position, adapter.getCount() - 1));
         }
     }

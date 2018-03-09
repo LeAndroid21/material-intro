@@ -303,12 +303,12 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
 
     private void initViews() {
         // bind views
-        miFrame = (ConstraintLayout) findViewById(R.id.mi_frame);
-        miPager = (FadeableViewPager) findViewById(R.id.mi_pager);
-        miPagerIndicator = (InkPageIndicator) findViewById(R.id.mi_pager_indicator);
-        miButtonCta = (TextSwitcher) findViewById(R.id.mi_button_cta);
-        miButtonBack = (ImageButton) findViewById(R.id.mi_button_back);
-        miButtonNext = (ImageButton) findViewById(R.id.mi_button_next);
+        miFrame = findViewById(R.id.mi_frame);
+        miPager = findViewById(R.id.mi_pager);
+        miPagerIndicator = findViewById(R.id.mi_pager_indicator);
+        miButtonCta = findViewById(R.id.mi_button_cta);
+        miButtonBack = findViewById(R.id.mi_button_back);
+        miButtonNext = findViewById(R.id.mi_button_next);
 
         if (miButtonCta != null) {
             miButtonCta.setInAnimation(this, R.anim.mi_fade_in);
@@ -825,7 +825,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         } else if (realPosition < adapter.getCount() - 1) {
             //Scroll away skip button
             if (buttonBackFunction == BUTTON_BACK_FUNCTION_SKIP) {
-                boolean rtl = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && getResources().getConfiguration().getLayoutDirection() ==
+                boolean rtl = getResources().getConfiguration().getLayoutDirection() ==
                         View.LAYOUT_DIRECTION_RTL;
                 miButtonBack.setTranslationX(positionOffset * (rtl ? 1 : -1) * miPager.getWidth());
             } else {
@@ -834,7 +834,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         } else {
             //Keep skip button scrolled away, hide next button
             if (buttonBackFunction == BUTTON_BACK_FUNCTION_SKIP) {
-                boolean rtl = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && getResources().getConfiguration().getLayoutDirection() ==
+                boolean rtl = getResources().getConfiguration().getLayoutDirection() ==
                         View.LAYOUT_DIRECTION_RTL;
                 miButtonBack.setTranslationX((rtl ? 1 : -1) * miPager.getWidth());
             } else {
@@ -896,12 +896,10 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
     }
 
     private void updateFullscreen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            if (adapter != null && position + positionOffset > adapter.getCount() - 1) {
-                setFullscreenFlags(false);
-            } else {
-                setFullscreenFlags(fullscreen);
-            }
+        if (adapter != null && position + positionOffset > adapter.getCount() - 1) {
+            setFullscreenFlags(false);
+        } else {
+            setFullscreenFlags(fullscreen);
         }
     }
 

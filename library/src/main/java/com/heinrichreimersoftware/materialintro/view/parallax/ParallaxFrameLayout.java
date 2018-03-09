@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import com.heinrichreimersoftware.materialintro.R;
 
 public class ParallaxFrameLayout extends FrameLayout implements Parallaxable {
-
     @FloatRange(from = -1.0, to = 1.0)
     private float offset = 0;
 

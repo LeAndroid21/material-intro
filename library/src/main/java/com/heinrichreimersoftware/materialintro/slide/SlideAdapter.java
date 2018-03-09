@@ -136,6 +136,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
         return super.getItemPosition(object);
     }
 
+    @NonNull
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         Fragment fragment = getItem(position);
