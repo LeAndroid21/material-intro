@@ -523,9 +523,6 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         if (position >= getCount()) {
             return false;
         }
-        if (position <= 0) {
-            return true;
-        }
 
         if (buttonNextFunction == BUTTON_NEXT_FUNCTION_NEXT && position >= getCount() - 1)
             //Block finishing when button "next" function is not "finish".
